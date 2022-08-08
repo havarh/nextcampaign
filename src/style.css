@@ -4,7 +4,7 @@
   --normal-weight: 400;
 }
 
-/* 🏎 */
+/* 🏎🏎🏎🏎🏎 */
 html {
   background: rgba(45, 36, 91, 1);/* to right top */
   background-image: url("TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
@@ -24,7 +24,7 @@ body {
   height: 100vh;
   width: 100%;
   margin: 0;
-	background: rgba(45, 36, 91, .5);/*#00ECB9;*/
+  background: rgba(45, 36, 91, .5);/*#00ECB9;*/
  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);    
   font-family: var(--font-name), sans-serif;
@@ -86,21 +86,21 @@ p {
   margin: .3em 0 .3em;
 }
 #clockdiv {
-	font-family: var(--font-name), sans-serif;
-	color: #fff;
-	display: inline-block;
-	font-weight: var(--normal-weight);
-	text-align: center;
-	font-size: 2em;
+  font-family: var(--font-name), sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: var(--normal-weight);
+  text-align: center;
+  font-size: 2em;
   padding: .3em;
 }
 
 #clockdiv > div {
-	padding: .2em;
-	border-radius: .2em;
-	/*background: rgba(94, 76, 191, .3);*/
+  padding: .2em;
+  border-radius: .2em;
+  /*background: rgba(94, 76, 191, .3);*/
   background-color: rgba(255, 255, 255, 0.15); 
-	display: inline-block;
+  display: inline-block;
  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   /*border: 1px solid rgba(255, 255, 255, 0.5);*/
@@ -110,12 +110,12 @@ p {
 }
 
 #clockdiv div > span {
-	padding: .45em;
-	border-radius: .2em;
-	/*background: rgba(64, 51, 129, .3);*//*.8*/
+  padding: .45em;
+  border-radius: .2em;
+  /*background: rgba(64, 51, 129, .3);*//*.8*/
   /*background: rgba(64, 51, 129, .3);*/
   background: rgba(255, 255, 255, .15);
-	display: inline-block;
+  display: inline-block;
   /* 10 px */
 
 }
@@ -127,8 +127,8 @@ p {
   margin-right: 2em;
 }
 .smalltext {
-	padding-top: .5em;
-	font-size: .5em;
+  padding-top: .5em;
+  font-size: .5em;
 }
 .hidden {
   display: none !important;
@@ -140,10 +140,6 @@ p {
   font-size: .7em;
   opacity: .3;
 }
-#car {
-  position: fixed;
-  bottom: 4rem;
-  right: 2rem; 
-  font-size: 1em;
-  opacity: 1;
+#codeby a {
+  color: #c0c0c0;
 }

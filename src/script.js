@@ -1,9 +1,11 @@
-// needs the following libraries
-// serverTime, for synchronising local clock to server:
-// https://nextcampaign.m8.no/time.php (.phps for source)
-// Luxon for calculating time diffrence, including months
-// https://moment.github.io/luxon/
-// this page is based on: https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+/* needs the following libraries
+ * serverTime, for synchronising local clock to server:
+ * https://nextcampaign.m8.no/time.php (.phps for source)
+ * Luxon for calculating time diffrence, including months
+ * https://moment.github.io/luxon/
+ * this code is based on: https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+ */
+// testdates to test the timer, overwrites serverTime
 //serverTime = new Date('July 1 2022 17:00:01 UTC+2');
 //serverTime = new Date('July 1 2022 16:59:50 UTC+2');
 //serverTime = new Date('Sept 4 2022 16:59:50 UTC+1');
@@ -65,7 +67,6 @@ function initializeClock(id, endtime) {
       hoursSpan = document.getElementById("hours"),
       minutesSpan = document.getElementById("minutes"),
       secondsSpan = document.getElementById("seconds");
-  //const monthsSpan = clock.querySelector('.months');
 
   function updateClock() {
     var timer = getTimeRemaining(endtime);
@@ -84,13 +85,11 @@ function initializeClock(id, endtime) {
     minutesSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.minutes == 1?"Minute":"Minutes");
 
     // not showing seconds when there's more than 1 month or more than 7 days to the next campaign
-    if (showSeconds) // timer.months < 1 || timer.days <= 7
+    if (showSeconds)
       secondsSpan.innerHTML = ('0' + timer.seconds).slice(-2);
-    secondsSpan.parentElement.classList.toggle("hidden", !showSeconds); //timer.months > 0 || timer.days > 7
+    secondsSpan.parentElement.classList.toggle("hidden", !showSeconds);
     if (timer.finish) {
       console.log("finish");
-      //clearInterval(timeinterval);
-      //setTimeout(ready(), 1024);
       return;
     }
     // source: https://www.mediawiki.org/wiki/MediaWiki:Gadget-UTCLiveClock.js
@@ -108,7 +107,6 @@ function initializeClock(id, endtime) {
     }, (1100) - ms );    
   }
   updateClock();
-  //const timeinterval = setInterval(updateClock, 1000);
 }
 
 const thisYear = today().getUTCFullYear();
