@@ -11,26 +11,24 @@ html {
   background-image: -webkit-image-set(
     url("TMcar.webp") type("image/webp"),
     url("TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
-  background-image:  image-set(
+  background-image: image-set(
     url("TMcar.avif") type("image/avif"),
     url("TMcar.webp") type("image/webp"),
     url("TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186)); 
   background-size: auto 100%;
-  background-repeat: /*space*/ no-repeat;
+  background-repeat: no-repeat;
   background-position: bottom;
-  /*max-width: 70em;*/
 }
 body {
   height: 100vh;
   width: 100%;
   margin: 0;
-  background: rgba(45, 36, 91, .5);/*#00ECB9;*/
+  background: rgba(45, 36, 91, .5);
  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);    
   font-family: var(--font-name), sans-serif;
   font-weight: var(--normal-weight);
   overflow: hidden;
-  /*max-width: 47em;*/
 }
 @media only screen and (min-width: 1024px) {
   .center {
@@ -49,19 +47,16 @@ body {
   height: 100vh;
   overflow-y: auto;
 }
-/*h1,*/ h2, h3, p {
-  color: #c0c0c0 /* #877EA5 */;
+h2, h3, p {
+  color: #c0c0c0; /* #877EA5 */
   text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
 }
 h1 {
-  /*color: #396;*/
   font-size: 2.2rem;
   margin: .5em 0 .1em;
 }
 h1.logo {
-  /*background: linear-gradient(180deg, rgba(137,249,252,1) 0%, rgba(255,38,142,1) 100%);*/
   background: linear-gradient(300deg, #93f5ec 20%, #a77bf3 70%);
-  /*background: linear-gradient(90deg,#30E1B7 0%,#E1BA30 100%);*/
  -webkit-background-clip: text;
   background-clip: text;
  -webkit-text-fill-color: transparent;
@@ -112,12 +107,9 @@ p {
 #clockdiv div > span {
   padding: .45em;
   border-radius: .2em;
-  /*background: rgba(64, 51, 129, .3);*//*.8*/
-  /*background: rgba(64, 51, 129, .3);*/
+/*background: rgba(64, 51, 129, .3);*//*.8*/
   background: rgba(255, 255, 255, .15);
   display: inline-block;
-  /* 10 px */
-
 }
 .flexbox {
   display: flex;
