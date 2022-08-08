@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@100;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 :root {
-  --font-name: 'Source Sans Pro';
+  --font-name: 'Open Sans';
+  --normal-weight: 400;
 }
 
 /* 🏎 */
 html {
-  background: rgba(45, 36, 91, 1);
-  background-image: url("TMcar_small.png");
+  background: rgba(45, 36, 91, 1);/* to right top */
+  background-image: url("TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: -webkit-image-set(
     url("TMcar.webp") type("image/webp"),
-    url("TMcar_small.png") type("image/png"));
-  background-image: image-set(
+    url("TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
+  background-image:  image-set(
     url("TMcar.avif") type("image/avif"),
     url("TMcar.webp") type("image/webp"),
-    url("TMcar_small.png") type("image/png"));  
-  background-size: auto 95%;
+    url("TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186)); 
+  background-size: auto 100%;
   background-repeat: /*space*/ no-repeat;
   background-position: bottom;
   /*max-width: 70em;*/
@@ -27,7 +28,7 @@ body {
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);    
   font-family: var(--font-name), sans-serif;
-  font-weight: 100;
+  font-weight: var(--normal-weight);
   overflow: hidden;
   /*max-width: 47em;*/
 }
@@ -40,8 +41,8 @@ body {
   }
 }
 #container {
-  margin-left: 1.1em;
-  margin-right: .5em;  
+  margin-left: 1.1rem;
+  margin-right: .5rem;  
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -54,41 +55,41 @@ body {
 }
 h1 {
   /*color: #396;*/
-  font-weight: 100;
-  font-size: 2.2em;
+  font-size: 2.2rem;
   margin: .5em 0 .1em;
 }
-h1 {
-  background: linear-gradient(180deg, rgba(137,249,252,1) 0%, rgba(255,38,142,1) 100%); 
+h1.logo {
+  /*background: linear-gradient(180deg, rgba(137,249,252,1) 0%, rgba(255,38,142,1) 100%);*/
+  background: linear-gradient(300deg, #93f5ec 20%, #a77bf3 70%);
   /*background: linear-gradient(90deg,#30E1B7 0%,#E1BA30 100%);*/
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 700;
+  font-weight: bold;
   z-index: 2;
   color: #00000059;
   filter: drop-shadow(0 3px 3px) brightness(1.1);
 }
 h2 {
   font-weight: bold;
-  font-size: 1.8em;
-  margin: .3em 0 .2em;
+  font-size: 1.8rem;
+  margin: .1em 0 .2em;
 }
 h3 {
   font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   margin: 1em 0 .2em;
 }
 p {
-  font-weight: 100;
-  font-size: 1.3em;
-  margin: .5em 0 .5em;
+  font-weight: var(--normal-weight);
+  font-size: 1.3rem;
+  margin: .3em 0 .3em;
 }
 #clockdiv {
 	font-family: var(--font-name), sans-serif;
 	color: #fff;
 	display: inline-block;
-	font-weight: 100;
+	font-weight: var(--normal-weight);
 	text-align: center;
 	font-size: 2em;
 }
@@ -96,20 +97,23 @@ p {
 #clockdiv > div {
 	padding: .2em;
 	border-radius: .2em;
-	background: rgba(94, 76, 191, .3);
-  /*background-color: rgba(255, 255, 255, 0.3); */ 
+	/*background: rgba(94, 76, 191, .3);*/
+  background-color: rgba(255, 255, 255, 0.15); 
 	display: inline-block;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);    
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 
 #clockdiv div > span {
 	padding: .45em;
 	border-radius: .2em;
-	background: rgba(64, 51, 129, .3);/*.8*/
+	/*background: rgba(64, 51, 129, .3);*//*.8*/
+  /*background: rgba(64, 51, 129, .3);*/
+  background: rgba(255, 255, 255, .15);
 	display: inline-block;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px); 
+  /* 10 px */
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); 
 }
 .flexbox {
   display: flex;
@@ -127,8 +131,15 @@ p {
 }
 #codeby {
   position: fixed;
-  bottom: 2em;
-  right: 2em; 
+  bottom: 2rem;
+  right: 2rem; 
   font-size: .7em;
   opacity: .3;
+}
+#car {
+  position: fixed;
+  bottom: 4rem;
+  right: 2rem; 
+  font-size: 1em;
+  opacity: 1;
 }
