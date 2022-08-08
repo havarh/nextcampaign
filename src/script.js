@@ -20,6 +20,7 @@ function today() {
 }
 const DateTime = luxon.DateTime;
 const Duration = luxon.Duration;
+
 // rounds down Date object or timestamp in milliseconds to nearest minute
 function roundToNearestMinute(date) {
   const minutes = 1;
@@ -76,7 +77,13 @@ function initializeClock(id, endtime) {
     
     hoursSpan.innerHTML = ('0' + timer.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + timer.minutes).slice(-2);
-    // no need to show seconds when there's more than 1 month or more than 7 days to the next campaign
+    // change text of .smalltext if plural or singular months/days/hours, not caring about seconds
+    monthsSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.months == 1?"Month":"Months");
+    daysSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.days == 1?"Day":"Days");
+    hoursSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.hours == 1?"Hour":"Hours");
+    minutesSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.minutes == 1?"Minute":"Minutes");
+
+    // not showing seconds when there's more than 1 month or more than 7 days to the next campaign
     if (showSeconds) // timer.months < 1 || timer.days <= 7
       secondsSpan.innerHTML = ('0' + timer.seconds).slice(-2);
     secondsSpan.parentElement.classList.toggle("hidden", !showSeconds); //timer.months > 0 || timer.days > 7
@@ -86,6 +93,7 @@ function initializeClock(id, endtime) {
       //setTimeout(ready(), 1024);
       return;
     }
+    // source: https://www.mediawiki.org/wiki/MediaWiki:Gadget-UTCLiveClock.js
     // Schedule the next time change.
     //
     // We schedule the change for 100 ms _after_ the next clock tick. The delay
