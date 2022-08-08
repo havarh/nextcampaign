@@ -1,13 +1,17 @@
-// borrowed from https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+// needs the following libraries
+// serverTime, for synchronising local clock to server:
+// https://nextcampaign.m8.no/time.php (.phps for source)
+// Luxon for calculating time diffrence, including months
+// https://moment.github.io/luxon/
+// this page is based on: https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 //serverTime = new Date('July 1 2022 17:00:01 UTC+2');
 //serverTime = new Date('July 1 2022 16:59:50 UTC+2');
 //serverTime = new Date('Sept 4 2022 16:59:50 UTC+1');
 //serverTime = new Date('Feb 20 2022 23:59:50 UTC+1');
-//serverTime = new Date('Jan 1 2022 14:59:50 UTC+1');
+//serverTime = new Date('Dec 31 2021 23:59:50 UTC+1');
 var localTime = Date.now();
 var timeDiff = 0;
-// serverTime is loaded from:
-// https://nextcampaign.m8.no/time.php (.phps for source)
+
 if (typeof serverTime != "undefined")
   timeDiff = serverTime - localTime;
 function today() {
