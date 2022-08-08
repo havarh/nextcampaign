@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>NextCampaign.m8.no: Countdown to the next Trackmania campaign</title>
+  <meta name="apple-mobile-web-app-title" content="Next Campaign">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http%3A//www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕒</text></svg>">
+  <link id="apple-touch-icon" rel="apple-touch-icon" sizes="512x512" href="https://nextcampaign.m8.no/Next-campaign-icon-512.png?upd">
+  <meta name="theme-color" 
+        content="#2D245B" 
+        media="(prefers-color-scheme: light)">
+  <meta name="theme-color" 
+        content="#2D245B" 
+        media="(prefers-color-scheme: dark)"><link rel="stylesheet" href="./style.css?">
+</head>
+<body>
+  <div id="container">
+  <h1>Countdown to the next Trackmania campaign</h1>
+  <h2>Current</h2>
+  <p id="currentCampaignName"></p>
+  <h2>Next</h2>
+  <p id="campaignName"></p>
+  <h2>New season</h2>
+  <div id="clockdiv">
+    <div class="hidden">
+      <span id="months"></span>
+      <div class="smalltext">Months</div>
+    </div>
+    <div class="hidden">
+      <span id="days"></span>
+      <div class="smalltext">Days</div>
+    </div>
+    <div>
+      <span id="hours"></span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <span id="minutes"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span id="seconds"></span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+  <h3>Release date</h3>
+  <p id="releasedate"></p>
+  </div>
+  <script src='https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/2.4.0/luxon.min.js'></script>
+  <script src='https://nextcampaign.m8.no/time.php'></script>
+  <script  src="./script.js"></script>
+</body>
+</html>

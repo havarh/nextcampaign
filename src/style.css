@@ -1,0 +1,71 @@
+html {
+  background: #2D245B;
+}
+body {
+  height: 100vh;
+  margin-left: 1.1em;
+	background: #2D245B;/*#00ECB9;*/
+  font-family: sans-serif;
+  font-weight: 100;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  overflow: hidden;
+}
+#container {
+  height: 100vh;
+  overflow-y: auto;
+}
+h1, h2, h3, p {
+  color: #c0c0c0 /* #877EA5 */;
+}
+h1 {
+  /*color: #396;*/
+  font-weight: 100;
+  font-size: 2.2em;
+  margin: .5em 0em .5em;
+}
+h2 {
+  font-weight: bold;
+  font-size: 1.8em;
+  margin: .5em 0 .5em;
+}
+h3 {
+  font-weight: bold;
+  font-size: 1.4em;
+  margin: 40px 0px 20px;  
+}
+p {
+  font-weight: 100;
+  font-size: 1.3em;
+}
+#clockdiv {
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 2em;
+}
+
+#clockdiv > div {
+	padding: 10px;
+	border-radius: 3px;
+	background: #5e4cbf;
+	display: inline-block;
+}
+
+#clockdiv div > span {
+	padding: 15px;
+	border-radius: 3px;
+	background: #403381;
+	display: inline-block;
+}
+
+.smalltext {
+	padding-top: .5em;
+	font-size: .5em;
+}
+.hidden {
+  display: none !important;
+}
