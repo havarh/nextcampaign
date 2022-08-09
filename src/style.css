@@ -7,14 +7,14 @@
 /* 🏎🏎🏎🏎🏎 */
 html {
   background: rgba(45, 36, 91, 1);/* to right top */
-  background-image: url("TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
+  background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: -webkit-image-set(
-    url("TMcar.webp") type("image/webp"),
-    url("TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
+    url("/images/TMcar/TMcar.webp") type("image/webp"),
+    url("/images/TMcar/TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: image-set(
-    url("TMcar.avif") type("image/avif"),
-    url("TMcar.webp") type("image/webp"),
-    url("TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186)); 
+    url("/images/TMcar/TMcar.avif") type("image/avif"),
+    url("/images/TMcar/TMcar.webp") type("image/webp"),
+    url("/images/TMcar/TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186)); 
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -132,6 +132,13 @@ p {
   font-size: .7em;
   opacity: .3;
 }
-#codeby a {
+#skin {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem; 
+  font-size: .7em;
+  opacity: .3;
+}
+#codeby a, #skin a {
   color: #c0c0c0;
 }
