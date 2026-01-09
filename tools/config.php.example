@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'basicAuthCredentials' => 'username:password',
+    'userAgent' => 'Nextcampaign / yourname',
+];
+?>
