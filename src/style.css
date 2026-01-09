@@ -4,17 +4,19 @@
   --normal-weight: 400;
 }
 
-/* 🏎🏎🏎🏎🏎 */
+/* 🏎 */
 html {
   background: rgba(45, 36, 91, 1);/* to right top */
   background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
+  /* Chrome/Chromium and Safari still doesn't support type, so those browser will only get the webp alternative as it's not possible to see if they support avif. */
   background-image: -webkit-image-set(
-    url("/images/TMcar/TMcar.webp") type("image/webp"),
-    url("/images/TMcar/TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
+    url("/images/TMcar/TMcar.webp") 1x
+  ), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: image-set(
     url("/images/TMcar/TMcar.avif") type("image/avif"),
     url("/images/TMcar/TMcar.webp") type("image/webp"),
-    url("/images/TMcar/TMcar_small.png") type("image/png")), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186)); 
+    url("/images/TMcar/TMcar_small.png") type("image/png")
+  ), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186)); 
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -23,7 +25,7 @@ body {
   height: 100vh;
   width: 100%;
   margin: 0;
-  background: rgba(45, 36, 91, .5);
+	background: rgba(45, 36, 91, .5);
  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);    
   font-family: var(--font-name), sans-serif;
@@ -52,7 +54,7 @@ h2, h3, p {
   text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
 }
 h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin: .5em 0 .1em;
 }
 h1.logo {
@@ -80,22 +82,25 @@ p {
   font-size: 1.3rem;
   margin: .3em 0 .3em;
 }
+p#generalinfo {
+  font-size: 1rem;
+}
 #clockdiv {
-  font-family: var(--font-name), sans-serif;
-  color: #fff;
-  display: inline-block;
-  font-weight: var(--normal-weight);
-  text-align: center;
-  font-size: 2em;
+	font-family: var(--font-name), sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: var(--normal-weight);
+	text-align: center;
+	font-size: 2em;
   padding: .3em;
 }
 
 #clockdiv > div {
-  padding: .2em;
-  border-radius: .2em;
-  /*background: rgba(94, 76, 191, .3);*/
+	padding: .2em;
+	border-radius: .2em;
+	/*background: rgba(94, 76, 191, .3);*/
   background-color: rgba(255, 255, 255, 0.15); 
-  display: inline-block;
+	display: inline-block;
  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   /*border: 1px solid rgba(255, 255, 255, 0.5);*/
@@ -105,11 +110,11 @@ p {
 }
 
 #clockdiv div > span {
-  padding: .45em;
-  border-radius: .2em;
+	padding: .45em;
+	border-radius: .2em;
 /*background: rgba(64, 51, 129, .3);*//*.8*/
   background: rgba(255, 255, 255, .15);
-  display: inline-block;
+	display: inline-block;
 }
 .flexbox {
   display: flex;
@@ -119,23 +124,23 @@ p {
   margin-right: 2em;
 }
 .smalltext {
-  padding-top: .5em;
-  font-size: .5em;
+	padding-top: .5em;
+	font-size: .5em;
 }
 .hidden {
   display: none !important;
 }
 #codeby {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem; 
+  bottom: 6rem;
+  right: 1rem; 
   font-size: .7em;
   opacity: .3;
 }
 #skin {
   position: fixed;
-  bottom: 2rem;
-  left: 2rem; 
+  bottom: 6rem;
+  left: 1rem; 
   font-size: .7em;
   opacity: .3;
 }

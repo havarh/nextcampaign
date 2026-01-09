@@ -22,7 +22,50 @@ function today() {
 }
 const DateTime = luxon.DateTime;
 const Duration = luxon.Duration;
+// vibe coded, gets endTimestamp stored from Trackmania API
+function getEndTimestamp() {
+    if (!('CAMPAIGN_END_TIMESTAMP' in window)) return 0;
+    const end = window.CAMPAIGN_END_TIMESTAMP;
+    return end > Date.now() / 1000 ? end : 0;
+}
+// vibe coded, gets campaign info from cached Trackmania API
+let cachedCampaign = undefined;
+async function getCampaignInfo() {
+    if (cachedCampaign !== undefined) return cachedCampaign;
 
+    try {
+        const res = await fetch('/campaign_info_test.json', { cache: 'no-store' });
+        if (!res.ok) return cachedCampaign = null;
+
+        const data = await res.json();
+        const end = Number(data?.endTimestamp ?? 0);
+        const now = Math.floor(Date.now() / 1000);
+
+        return cachedCampaign = (end && now <= end) ? data : null;
+    } catch {
+        return cachedCampaign = null;
+    }
+}
+
+// vibe coded, gets next season based on current season
+function nextSeason(current) {
+    const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+
+    const [season, yearStr] = current.split(' ');
+    let year = Number(yearStr);
+
+    const index = seasons.indexOf(season);
+    if (index === -1 || !year) return '';
+
+    const nextIndex = (index + 1) % seasons.length;
+
+    // Only increment year when wrapping Fall → Winter
+    if (season === 'Fall') {
+        year += 1;
+    }
+
+    return `${seasons[nextIndex]} ${year}`;
+}
 // rounds down Date object or timestamp in milliseconds to nearest minute
 function roundToNearestMinute(date) {
   const minutes = 1;
@@ -59,7 +102,22 @@ function getTimeRemaining(endtime) {
     seconds
   };
 }
+// the next 2 functions are vibe coded with ChatGPT
+function quartersSinceSummer2020(currentDate) {
+    const startDate = DateTime.local(2020, 6, 1); // June 1, 2020
+    const startQuarter = startDate.quarter;
+    const currentQuarter = currentDate.quarter;
 
+    const yearDifference = currentDate.year - startDate.year;
+    const totalQuarters = yearDifference * 4 + (currentQuarter - startQuarter);
+
+    return totalQuarters;
+}
+function toOrdinalNumber(number) {
+    const suffixes = ["th", "st", "nd", "rd"];
+    const lastTwoDigits = number % 100;
+    return number + (suffixes[(lastTwoDigits - 20) % 10] || suffixes[lastTwoDigits] || suffixes[0]);
+}
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id),
       monthsSpan = document.getElementById("months"),
@@ -78,11 +136,12 @@ function initializeClock(id, endtime) {
     
     hoursSpan.innerHTML = ('0' + timer.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + timer.minutes).slice(-2);
-    // change text of .smalltext if plural or singular months/days/hours, not caring about seconds
-    monthsSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.months == 1?"Month":"Months");
-    daysSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.days == 1?"Day":"Days");
-    hoursSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.hours == 1?"Hour":"Hours");
-    minutesSpan.parentNode.querySelector('.smalltext').innerHTML=(timer.minutes == 1?"Minute":"Minutes");
+    // change text of .smalltext if plural or singular months/days/hours //, not caring about seconds
+    monthsSpan.parentNode.querySelector('.smalltext').innerHTML="Month"+(timer.months == 1?"":"s");
+    daysSpan.parentNode.querySelector('.smalltext').innerHTML="Day"+(timer.days == 1?"":"s");
+    hoursSpan.parentNode.querySelector('.smalltext').innerHTML="Hour"+(timer.hours == 1?"":"s");
+    minutesSpan.parentNode.querySelector('.smalltext').innerHTML="Minute"+(timer.minutes == 1?"":"s");
+    secondsSpan.parentNode.querySelector('.smalltext').innerHTML="Second"+(timer.seconds == 1?"":"s");
 
     // not showing seconds when there's more than 1 month or more than 7 days to the next campaign
     if (showSeconds)
@@ -108,23 +167,46 @@ function initializeClock(id, endtime) {
   }
   updateClock();
 }
+function renderCampaign(currentName, nextName, startMs, endMs) {
+    document.getElementById("campaignCounter").textContent =
+        toOrdinalNumber(quartersSinceSummer2020(DateTime.fromMillis(startMs)));
 
+    document.getElementById("currentCampaignName").textContent = currentName;
+    document.getElementById("campaignName").textContent = nextName;
+
+    document.getElementById("releasedate").textContent =
+        DateTime.fromMillis(endMs)
+            .setLocale('en-UK')
+            .toLocaleString({ ...DateTime.DATETIME_FULL, weekday: 'long' });
+
+    initializeClock('clockdiv', endMs);
+}
 const thisYear = today().getUTCFullYear();
-const  schedule = [
+const schedule = [
     [`Jan 1 ${ thisYear } 00:00:00 UTC+1`, `Jan 1 ${ thisYear } 17:00 UTC+1`, `Winter ${ thisYear }`],
     [`Jan 1 ${ thisYear } 17:00:01 UTC+1`, `April 1 ${ thisYear } 17:00 UTC+2`, `Spring ${ thisYear }`],
     [`April 1 ${ thisYear } 17:00:01 UTC+2`, `July 1 ${ thisYear } 17:00 UTC+2`, `Summer ${ thisYear }`],
     [`July 1 ${ thisYear } 17:00:01 UTC+2`, `Oct 1 ${ thisYear } 17:00 UTC+2`, `Fall ${ thisYear }`],
     [`Oct 1 ${ thisYear } 17:00:01 UTC+2`, `Jan 1 ${ thisYear + 1 } 17:00 UTC+1`, `Winter ${ thisYear + 1 }`]
     ];
+function getCampaignFromQuarter () {
+  
+}
 function ready() {
-  //schedule.forEach(([startDate, endDate, campaignName]) => {
-  schedule.forEach(function (value, count) {
+  // if endTimestamp is successfully read from Trackmania API use it instead
+  if (getEndTimestamp()) {
+    currentCampaignName = window.CURRENT_CAMPAIGN;
+    campaignName = nextSeason(currentCampaignName);
+    startMs = window.CAMPAIGN_START_TIMESTAMP * 1000;
+    endMs = getEndTimestamp() * 1000;
+    renderCampaign(currentCampaignName, campaignName, startMs, endMs);
+  }
+  else schedule.forEach(function (value, count) {
     var startDate = value[0],
         endDate = value[1],
         campaignName = value[2],
         currentCampaignName;
-    // put dates in milliseconds for easy comparisons
+      // put dates in milliseconds for easy comparison
     const startMs = Date.parse(startDate);
     const endMs = Date.parse(endDate);
     const currentMs = (today().getTime());
@@ -135,11 +217,13 @@ function ready() {
       }
       else 
         currentCampaignName = schedule[count-1][2];
+      renderCampaign(currentCampaignName, campaignName, startMs, endMs);
+      /*document.getElementById("campaignCounter").innerHTML = toOrdinalNumber(quartersSinceSummer2020(DateTime.fromMillis(startMs)));
       document.getElementById("campaignName").innerHTML = campaignName;
       document.getElementById("currentCampaignName").innerHTML = currentCampaignName;
       document.getElementById("releasedate").innerHTML =
-        DateTime.fromMillis(new Date(endDate).getTime()).setLocale('en-UK').toLocaleString(DateTime.DATETIME_FULL);
-      initializeClock('clockdiv', endDate);
+        DateTime.fromMillis(new Date(endDate).getTime()).setLocale('en-UK').toLocaleString({...DateTime.DATETIME_FULL, weekday: 'long' });
+      initializeClock('clockdiv', endDate);*/
     }
   });
 }
