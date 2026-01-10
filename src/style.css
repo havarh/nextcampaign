@@ -6,12 +6,8 @@
 
 /* 🏎 */
 html {
-  background: rgba(45, 36, 91, 1);/* to right top */
+  background: rgba(45, 36, 91, 1); /* to right top */
   background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
-  /* Chrome/Chromium and Safari still doesn't support type, so those browser will only get the webp alternative as it's not possible to see if they support avif. */
-  background-image: -webkit-image-set(
-    url("/images/TMcar/TMcar.webp") 1x
-  ), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: image-set(
     url("/images/TMcar/TMcar.avif") type("image/avif"),
     url("/images/TMcar/TMcar.webp") type("image/webp"),
