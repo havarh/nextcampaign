@@ -319,9 +319,10 @@ function initializeClock(id, endtime) {
   updateClock();
 }
 function renderCampaign({currentName, nextName, startMs, endMs}) {
-  document.getElementById("campaignCounter").textContent =
+  campaignCounter = document.getElementById("campaignCounter");
+  campaignCounter.textContent =
     toOrdinalNumber(quartersSinceSummer2020(DateTime.fromMillis(startMs)));
-
+  campaignCounter.parentNode.classList.remove("hidden");
   document.getElementById("currentCampaignName").textContent = currentName;
   document.getElementById("nextCampaignName").textContent = nextName;
 
