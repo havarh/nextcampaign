@@ -1,7 +1,8 @@
 <?php
-
 return [
+    // create a server account https://webservices.openplanet.dev/auth/dedi
     'basicAuthCredentials' => 'username:password',
-    'userAgent' => 'Nextcampaign / yourname',
+    // Optional: override User-Agent here if you want
+    'userAgent' => 'NextCampaign / @username / email@example.com',
 ];
 ?>

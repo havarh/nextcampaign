@@ -1,6 +1,40 @@
 #!/usr/bin/env php
 <?php
 /**
+ * Trackmania Campaign Metadata Fetcher (CLI)
+ * (this script is vibe coded with ChatGPT)
+ *
+ * This script fetches the current official Trackmania campaign metadata
+ * from the Nadeo Live Services API and writes a cached JSON file used by
+ * the frontend (campaign_info.json).
+ *
+ * The script is intended to be executed from the command line only and
+ * must NOT be exposed via the web server. It is typically run via cron.
+ *
+ * Behavior:
+ * - Reads API credentials from config.php
+ * - Calls the Nadeo authentication endpoint to obtain an access token
+ * - Fetches the current official campaign data
+ * - Writes a normalized JSON file to campaign_info.json
+ * - Skips API calls if the cached data is fresh (≤ 48 hours old),
+ *   unless the campaign has already ended
+ *
+ * Cron usage:
+ * - The script is designed to be run periodically (e.g. once per hour)
+ * - Cron frequency can be higher than the API fetch interval, as the
+ *   script performs its own freshness checks before making API requests
+ * - Example cron entry:
+ *
+ *     0 * * * * /usr/bin/php /path/to/repo/tools/fetch_campaign.php
+ *
+ * Notes:
+ * - All paths are resolved relative to the php script directory
+ * - Only the generated JSON file is web-accessible; no PHP code or
+ *   credentials are exposed
+ * 
+ * You can symlink the campaign_info.json to your www root, or change
+ * the script to put it in the right directory
+ * 
  * Uses the following Trackmania 2020 APIs
  * 
  * Dedicated server account for authenticaton
@@ -21,7 +55,7 @@ declare(strict_types=1);
  */
 $configFile   = __DIR__ . '/config.php';
 $outputFile   = __DIR__ . '/campaign_info.json';
-$userAgent    = 'NextCampaign / @havarh / havarh+ubidev@gmail.com';
+$userAgent    = 'NextCampaign / @username / email@example.com';
 
 $authUrl      = 'https://prod.trackmania.core.nadeo.online/v2/authentication/token/basic';
 $campaignsUrl = 'https://live-services.trackmania.nadeo.live/api/campaign/official?offset=0&length=1';
