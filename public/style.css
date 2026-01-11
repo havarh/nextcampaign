@@ -8,7 +8,7 @@
  * 🏎
  */
 html {
-  background: #68168b; /*rgba(45, 36, 91, 1);*/ /* to right top */
+  background: rgb(163, 7, 186);
   background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: image-set(
     url("/images/TMcar/TMcar.avif") type("image/avif"),
