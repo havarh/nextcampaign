@@ -19,8 +19,9 @@ var localTime = Date.now(),
     timeDiff = 0,
     showSeconds = true;
 
-if (typeof serverTime != "undefined")
+if (typeof serverTime != "undefined") {
   timeDiff = serverTime - localTime;
+}
 function today() {
   return new Date(Date.now() + timeDiff);
 }
@@ -239,14 +240,13 @@ function getTimeRemaining(endtime) {
  *        Summer 2020.
  */
 function quartersSinceSummer2020(currentDate) {
-    const startDate = DateTime.local(2020, 6, 1); // June 1, 2020
-    const startQuarter = startDate.quarter;
-    const currentQuarter = currentDate.quarter;
+  const startDate = DateTime.local(2020, 6, 1); // June 1, 2020
+  const startQuarter = startDate.quarter;
+  const currentQuarter = currentDate.quarter;
 
-    const yearDifference = currentDate.year - startDate.year;
-    const totalQuarters = yearDifference * 4 + (currentQuarter - startQuarter);
-
-    return totalQuarters;
+  const yearDifference = currentDate.year - startDate.year;
+  const totalQuarters = yearDifference * 4 + (currentQuarter - startQuarter);
+  return totalQuarters;
 }
 /**
  * (Vibe coded with ChatGPT)
@@ -264,9 +264,9 @@ function quartersSinceSummer2020(currentDate) {
  * @returns {string} The ordinal form of the number (e.g. "3rd", "21st").
  */
 function toOrdinalNumber(number) {
-    const suffixes = ["th", "st", "nd", "rd"];
-    const lastTwoDigits = number % 100;
-    return number + (suffixes[(lastTwoDigits - 20) % 10] || suffixes[lastTwoDigits] || suffixes[0]);
+  const suffixes = ["th", "st", "nd", "rd"];
+  const lastTwoDigits = number % 100;
+  return number + (suffixes[(lastTwoDigits - 20) % 10] || suffixes[lastTwoDigits] || suffixes[0]);
 }
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id),
@@ -294,8 +294,9 @@ function initializeClock(id, endtime) {
     secondsSpan.parentNode.querySelector('.smalltext').innerHTML="Second"+(timer.seconds == 1?"":"s");
 
     // not showing seconds when there's more than 1 month or more than 7 days to the next campaign
-    if (showSeconds)
+    if (showSeconds) {
       secondsSpan.innerHTML = ('0' + timer.seconds).slice(-2);
+    }
     secondsSpan.parentElement.classList.toggle("hidden", !showSeconds);
     if (timer.finish) {
       // show confetti/fireworks?
@@ -314,7 +315,7 @@ function initializeClock(id, endtime) {
     var ms = today().getUTCMilliseconds();
     setTimeout( function () {
       updateClock();
-    }, (1100) - ms );    
+      }, (1100) - ms );    
   }
   updateClock();
 }
@@ -332,35 +333,37 @@ function renderCampaign({currentName, nextName, startMs, endMs}) {
             .toLocaleString({ ...DateTime.DATETIME_FULL, weekday: 'long' });
   initializeClock('clockdiv', endMs);
 }
+
 function getCampaignFromQuarter() {
   const thisYear = today().getUTCFullYear();
   // schedule list the date intervals for the name of the next campaign, should be rewritten with this campaign in mind
   // and then use nextSeason to show next campaign
   const schedule = [
-      [`Jan 1 ${ thisYear } 00:00:00 UTC+1`, `Jan 1 ${ thisYear } 17:00 UTC+1`, `Winter ${ thisYear }`],
-      [`Jan 1 ${ thisYear } 17:00:01 UTC+1`, `April 1 ${ thisYear } 17:00 UTC+2`, `Spring ${ thisYear }`],
-      [`April 1 ${ thisYear } 17:00:01 UTC+2`, `July 1 ${ thisYear } 17:00 UTC+2`, `Summer ${ thisYear }`],
-      [`July 1 ${ thisYear } 17:00:01 UTC+2`, `Oct 1 ${ thisYear } 17:00 UTC+2`, `Fall ${ thisYear }`],
-      [`Oct 1 ${ thisYear } 17:00:01 UTC+2`, `Jan 1 ${ thisYear + 1 } 17:00 UTC+1`, `Winter ${ thisYear + 1 }`]
-      ];
+    [`Jan 1 ${ thisYear } 00:00:00 UTC+1`, `Jan 1 ${ thisYear } 17:00 UTC+1`, `Winter ${ thisYear }`],
+    [`Jan 1 ${ thisYear } 17:00:01 UTC+1`, `April 1 ${ thisYear } 17:00 UTC+2`, `Spring ${ thisYear }`],
+    [`April 1 ${ thisYear } 17:00:01 UTC+2`, `July 1 ${ thisYear } 17:00 UTC+2`, `Summer ${ thisYear }`],
+    [`July 1 ${ thisYear } 17:00:01 UTC+2`, `Oct 1 ${ thisYear } 17:00 UTC+2`, `Fall ${ thisYear }`],
+    [`Oct 1 ${ thisYear } 17:00:01 UTC+2`, `Jan 1 ${ thisYear + 1 } 17:00 UTC+1`, `Winter ${ thisYear + 1 }`]
+  ];
   var campaignInfo;
   schedule.forEach(function (value, count) {
-      var startDate = value[0],
-          endDate = value[1],
-          nextCampaignName = value[2],
-          currentCampaignName;
-      // put dates in milliseconds for easy comparison
-      const startMs = Date.parse(startDate);
-      const endMs = Date.parse(endDate);
-      const currentMs = (today().getTime());
-      // if current date is between start and end dates, return the data to display the clock
-      if (endMs > currentMs && currentMs >= startMs ) {
-        if (count == 0) {
-          currentCampaignName = schedule[3][2].toString().replace(thisYear, (thisYear - 1));
-        }
-        else 
-          currentCampaignName = schedule[count-1][2];
-        campaignInfo = {
+    var startDate = value[0],
+        endDate = value[1],
+        nextCampaignName = value[2],
+        currentCampaignName;
+    // put dates in milliseconds for easy comparison
+    const startMs = Date.parse(startDate);
+    const endMs = Date.parse(endDate);
+    const currentMs = (today().getTime());
+    // if current date is between start and end dates, return the data to display the clock
+    if (endMs > currentMs && currentMs >= startMs ) {
+      if (count == 0) {
+        currentCampaignName = schedule[3][2].toString().replace(thisYear, (thisYear - 1));
+      }
+      else {
+        currentCampaignName = schedule[count-1][2];
+      }
+      campaignInfo = {
                 currentName: currentCampaignName,
                 nextName: nextCampaignName,
                 startMs: startMs,
@@ -372,21 +375,21 @@ function getCampaignFromQuarter() {
 }
 
 async function getCampaignFromAPI() {
-    const info = await getCampaignInfo();
-    if (!info) return null;
-    return {
-        currentName: info.currentCampaign,
-        nextName: nextSeason(info.currentCampaign),
-        startMs: info.startTimestamp * 1000,
-        endMs: info.endTimestamp * 1000
-    };
+  const info = await getCampaignInfo();
+  if (!info) return null;
+  return {
+    currentName: info.currentCampaign,
+    nextName: nextSeason(info.currentCampaign),
+    startMs: info.startTimestamp * 1000,
+    endMs: info.endTimestamp * 1000
+  };
 }
 
 async function init() {
-    let campaign =
-        (!demoMode && await getCampaignFromAPI()) ||
-        getCampaignFromQuarter();
-    if (!campaign) return;
-    renderCampaign(campaign);
+  let campaign =
+      (!demoMode && await getCampaignFromAPI()) ||
+      getCampaignFromQuarter();
+  if (!campaign) return;
+  renderCampaign(campaign);
 }
 document.addEventListener("DOMContentLoaded", init);

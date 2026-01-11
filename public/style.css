@@ -4,9 +4,11 @@
   --normal-weight: 400;
 }
 
-/* 🏎 */
+/**
+ * 🏎
+ */
 html {
-  background: rgba(45, 36, 91, 1); /* to right top */
+  background: #68168b; /*rgba(45, 36, 91, 1);*/ /* to right top */
   background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rgb(39, 196, 245), rgb(163, 7, 186));
   background-image: image-set(
     url("/images/TMcar/TMcar.avif") type("image/avif"),
@@ -21,7 +23,7 @@ body {
   height: 100vh;
   width: 100%;
   margin: 0;
-	background: rgba(45, 36, 91, .5);
+  background: rgba(45, 36, 91, .5);
  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);    
   font-family: var(--font-name), sans-serif;
@@ -55,7 +57,6 @@ h1 {
 }
 h1.logo {
   background: linear-gradient(300deg, #93f5ec 20%, #a77bf3 70%);
- -webkit-background-clip: text;
   background-clip: text;
  -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -92,11 +93,11 @@ p#generalinfo {
 }
 
 #clockdiv > div {
-	padding: .2em;
-	border-radius: .2em;
-	/*background: rgba(94, 76, 191, .3);*/
+  padding: .2em;
+  border-radius: .2em;
+  /*background: rgba(94, 76, 191, .3);*/
   background-color: rgba(255, 255, 255, 0.15); 
-	display: inline-block;
+  display: inline-block;
  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   /*border: 1px solid rgba(255, 255, 255, 0.5);*/
@@ -106,11 +107,11 @@ p#generalinfo {
 }
 
 #clockdiv div > span {
-	padding: .45em;
-	border-radius: .2em;
+  padding: .45em;
+  border-radius: .2em;
 /*background: rgba(64, 51, 129, .3);*//*.8*/
   background: rgba(255, 255, 255, .15);
-	display: inline-block;
+  display: inline-block;
 }
 .flexbox {
   display: flex;
@@ -120,8 +121,8 @@ p#generalinfo {
   margin-right: 2em;
 }
 .smalltext {
-	padding-top: .5em;
-	font-size: .5em;
+  padding-top: .5em;
+  font-size: .5em;
 }
 .hidden {
   display: none !important;
