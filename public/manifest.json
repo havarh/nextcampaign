@@ -1,7 +1,7 @@
 {
   "name": "NextCampaign™",
   "short_name": "NextCampaign™",
-  "description": "Displays the current and upcoming Trackmania seasonal campaign with a live countdown.",
+  "description": "Displays a live countdown to the upcoming Trackmania seasonal campaign, along with information about the current campaign.",
   "icons": [
     {
       "src": "https://nextcampaign.m8.no/Next-campaign-icon-1024.png",
