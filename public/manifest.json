@@ -4,10 +4,20 @@
   "description": "Displays a live countdown to the upcoming Trackmania seasonal campaign, along with information about the current campaign.",
   "icons": [
     {
-      "src": "https://nextcampaign.m8.no/Next-campaign-icon-1024.png",
+      "src": "./Next-campaign-icon-1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
-    }
+    },
+    {
+      "src": "./Next-campaign-icon-1024.webp",
+      "sizes": "1024x1024",
+      "type": "image/webp"
+    },
+    {
+      "src": "./Next-campaign-icon-1024.avif",
+      "sizes": "1024x1024",
+      "type": "image/avif"
+    }        
   ],
   "theme_color": "#68168b",
   "display": "standalone",
