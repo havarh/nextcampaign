@@ -9,12 +9,12 @@
  */
 html {
   background: rgb(163, 7, 186);
-  background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rgb(163, 7, 186), rgb(39, 196, 245), rgb(163, 7, 186));
+  background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rebeccapurple, rgb(39, 196, 245), rebeccapurple);
   background-image: image-set(
     url("/images/TMcar/TMcar.avif") type("image/avif"),
     url("/images/TMcar/TMcar.webp") type("image/webp"),
     url("/images/TMcar/TMcar_small.png") type("image/png")
-  ), linear-gradient(to top, rgb(163, 7, 186), rgb(39, 196, 245), rgb(163, 7, 186)); 
+  ), linear-gradient(to top, rebeccapurple, rgb(39, 196, 245), rebeccapurple); 
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: bottom;
