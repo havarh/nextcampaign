@@ -8,7 +8,7 @@
  * 🏎
  */
 html {
-  background: rgb(163, 7, 186);
+  background: rebeccapurple;
   background-image: url("/images/TMcar/TMcar_small.png"), linear-gradient(to top, rebeccapurple, rgb(39, 196, 245), rebeccapurple);
   background-image: image-set(
     url("/images/TMcar/TMcar.avif") type("image/avif"),
@@ -24,8 +24,6 @@ body {
   width: 100%;
   margin: 0;
   background: rgba(45, 36, 91, .5);
- -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);    
   font-family: var(--font-name), sans-serif;
   font-weight: var(--normal-weight);
   overflow: hidden;
