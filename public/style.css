@@ -139,3 +139,12 @@ p#generalinfo {
 #codeby a, #skin a {
   color: #c0c0c0;
 }
+.github-fork-ribbon:before {
+  background-color: #ff4cd2;
+}
+/* Hide on mobile (phones) */
+@media (max-width: 767px) {
+  .github-fork-ribbon {
+    display: none !important;
+  }
+}
