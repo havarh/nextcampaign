@@ -278,24 +278,24 @@ function initializeClock(id, endtime) {
 
   function updateClock() {
     var timer = getTimeRemaining(endtime);
-    monthsSpan.innerHTML = timer.months;
-    daysSpan.innerHTML = timer.days;
+    monthsSpan.textContent = timer.months;
+    daysSpan.textContent = timer.days;
     // hide months and/or days if they're 0
     monthsSpan.parentElement.classList.toggle("hidden", timer.months == 0);
     daysSpan.parentElement.classList.toggle("hidden", timer.days == 0);
     
-    hoursSpan.innerHTML = ('0' + timer.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + timer.minutes).slice(-2);
+    hoursSpan.textContent = ('0' + timer.hours).slice(-2);
+    minutesSpan.textContent = ('0' + timer.minutes).slice(-2);
     // change text of .smalltext if plural or singular months/days/hours //, not caring about seconds
-    monthsSpan.parentNode.querySelector('.smalltext').innerHTML="Month"+(timer.months == 1?"":"s");
-    daysSpan.parentNode.querySelector('.smalltext').innerHTML="Day"+(timer.days == 1?"":"s");
-    hoursSpan.parentNode.querySelector('.smalltext').innerHTML="Hour"+(timer.hours == 1?"":"s");
-    minutesSpan.parentNode.querySelector('.smalltext').innerHTML="Minute"+(timer.minutes == 1?"":"s");
-    secondsSpan.parentNode.querySelector('.smalltext').innerHTML="Second"+(timer.seconds == 1?"":"s");
+    monthsSpan.parentNode.querySelector('.smalltext').textContent="Month"+(timer.months == 1?"":"s");
+    daysSpan.parentNode.querySelector('.smalltext').textContent="Day"+(timer.days == 1?"":"s");
+    hoursSpan.parentNode.querySelector('.smalltext').textContent="Hour"+(timer.hours == 1?"":"s");
+    minutesSpan.parentNode.querySelector('.smalltext').textContent="Minute"+(timer.minutes == 1?"":"s");
+    secondsSpan.parentNode.querySelector('.smalltext').textContent="Second"+(timer.seconds == 1?"":"s");
 
     // not showing seconds when there's more than 1 month or more than 7 days to the next campaign
     if (showSeconds) {
-      secondsSpan.innerHTML = ('0' + timer.seconds).slice(-2);
+      secondsSpan.textContent = ('0' + timer.seconds).slice(-2);
     }
     secondsSpan.parentElement.classList.toggle("hidden", !showSeconds);
     if (timer.finish) {
