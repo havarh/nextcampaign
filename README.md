@@ -1,4 +1,4 @@
-# NextCampaign - Next Trackmania Campaign Countdown
+# NextCampaign™ - Next Trackmania Campaign Countdown
 
 A small web app that displays a **live countdown to when the next official Trackmania seasonal campaign is released**, along with information about the current campaign.  
 The countdown updates in real time and switches seamlessly when a new campaign begins.
@@ -12,11 +12,11 @@ The countdown updates in real time and switches seamlessly when a new campaign b
 [nextcampaign.m8.no](https://nextcampaign.m8.no/)
 
 ## Screenshots
-### NextCampaign on Firefox
+### NextCampaign™ on Firefox
 
 ![Screenshot](screenshots/NextCampaign-Firefox.png)
 
-### NextCampaign as a PWA app on iPhone
+### NextCampaign™ as a PWA app on iPhone
 ![Screenshot](screenshots/NextCampaign-iPhone-494px.png)
 
 ## Features
