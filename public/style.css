@@ -142,8 +142,8 @@ p#generalinfo {
 .github-fork-ribbon:before {
   background-color: #ff4cd2;
 }
-/* Hide on mobile (phones) */
-@media (max-width: 767px) {
+/* Hide on mobile phones, unless there's actually space for it */
+@media (max-width: 542px) {
   .github-fork-ribbon {
     display: none !important;
   }
