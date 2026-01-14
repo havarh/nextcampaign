@@ -1,4 +1,4 @@
-# NextCampaign - Next Trackmania Campaign Countdown
+# NextCampaign™ - Next Trackmania Campaign Countdown
 
 A small web app that displays a **live countdown to when the next official Trackmania seasonal campaign is released**, along with information about the current campaign.  
 The countdown updates in real time and switches seamlessly when a new campaign begins.
@@ -12,11 +12,11 @@ The countdown updates in real time and switches seamlessly when a new campaign b
 [nextcampaign.m8.no](https://nextcampaign.m8.no/)
 
 ## Screenshots
-### NextCampaign on Firefox
+### NextCampaign™ on Firefox
 
 ![Screenshot](screenshots/NextCampaign-Firefox.png)
 
-### NextCampaign as a PWA app on iPhone
+### NextCampaign™ as a PWA app on iPhone
 ![Screenshot](screenshots/NextCampaign-iPhone-494px.png)
 
 ## Features
@@ -34,7 +34,7 @@ The countdown updates in real time and switches seamlessly when a new campaign b
 
 ### Campaign data and API usage
 
-Campaign timing data is fetched from the official Trackmania Live Services API.  
+Campaign timing data is fetched from the official Trackmania Web Services API.  
 A **PHP CLI script** authenticates against the API, retrieves the current and upcoming campaign metadata, and writes a cached JSON file that the frontend reads.
 
 This approach keeps the frontend completely static while still ensuring accurate and up-to-date campaign timing.
@@ -61,6 +61,15 @@ The script can safely be run frequently (e.g. hourly)
 - Date and time calculations are handled using Luxon
 - A live countdown is rendered and updated continuously
 - When the countdown reaches zero, a small celebration animation is triggered
+### API usage
+Uses the following Trackmania Web Services APIs
+#### Dedicated server account for authenticaton
+[Documentation](https://webservices.openplanet.dev/auth/dedi)
+
+Use the [Trackmania Credentials dashboard](https://www.trackmania.com/player/dedicated-servers) to make a dedicated server account.
+
+#### Get seasonal campaigns (v2)
+[Documentation](https://webservices.openplanet.dev/live/campaigns/campaigns-v2)
 
 ## Contributing
 
