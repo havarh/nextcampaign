@@ -136,7 +136,15 @@ p#generalinfo {
   font-size: .7em;
   opacity: .3;
 }
-#codeby a, #skin a {
+#myClub {
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: .7em;
+  opacity: .3;  
+}
+#codeby a, #skin a, #myClub a {
   color: #c0c0c0;
 }
 .github-fork-ribbon::before {
