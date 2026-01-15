@@ -122,27 +122,21 @@ p#generalinfo {
 .hidden {
   display: none !important;
 }
-#codeby {
+#codeby, #skin, #myClub {
   position: fixed;
-  bottom: 6rem;
-  right: 1rem; 
+  bottom: 3rem;
   font-size: .7em;
   opacity: .3;
 }
+#codeby {
+  right: 1rem; 
+} 
 #skin {
-  position: fixed;
-  bottom: 6rem;
   left: 1rem; 
-  font-size: .7em;
-  opacity: .3;
 }
 #myClub {
-  position: fixed;
-  bottom: 6rem;
   left: 50%;
   transform: translate(-50%);
-  font-size: .7em;
-  opacity: .3;  
 }
 #codeby a, #skin a, #myClub a {
   color: #c0c0c0;
