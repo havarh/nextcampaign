@@ -345,7 +345,7 @@ function renderCampaign({currentName, nextName, startMs, endMs}) {
   seasonNumber.textContent =
     toOrdinalNumber(seasonOrdinalSinceSummer2020 (DateTime.fromMillis(startMs)));
   seasonName.textContent = 
-    currentName.toLowerCase().split(" ")[0];
+    currentName.toLowerCase().split(/\s+/)[0];
   campaignCounter.parentNode.classList.remove("hidden");
   document.getElementById("currentCampaignName").textContent = currentName;
   document.getElementById("nextCampaignName").textContent = nextName;
