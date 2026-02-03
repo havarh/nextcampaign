@@ -250,6 +250,23 @@ function quartersSinceSummer2020(currentDate) {
 }
 /**
  * (Vibe coded with ChatGPT)
+ * Returns which number this season is since Summer 2020.
+ * Example:
+ * - Winter 2026 → 6
+ * - Spring 2026 → 6
+ * - Summer 2026 → 7
+ * - Fall 2026   → 7
+ */
+function seasonOrdinalSinceSummer2020(currentDate) {
+  const seasonIndex = currentDate.quarter - 1;
+  // 0=Winter, 1=Spring, 2=Summer, 3=Fall
+
+  const firstYearBySeason = [2021, 2021, 2020, 2020];
+
+  return currentDate.year - firstYearBySeason[seasonIndex] + 1;
+}
+/**
+ * (Vibe coded with ChatGPT)
  * Converts a number into its English ordinal representation.
  *
  * Examples:
@@ -323,6 +340,12 @@ function renderCampaign({currentName, nextName, startMs, endMs}) {
   campaignCounter = document.getElementById("campaignCounter");
   campaignCounter.textContent =
     toOrdinalNumber(quartersSinceSummer2020(DateTime.fromMillis(startMs)));
+  seasonNumber = document.getElementById("seasonNumber");
+  seasonName = document.getElementById("seasonName");
+  seasonNumber.textContent =
+    toOrdinalNumber(seasonOrdinalSinceSummer2020 (DateTime.fromMillis(startMs)));
+  seasonName.textContent = 
+    currentName.toLowerCase().split(" ")[0];
   campaignCounter.parentNode.classList.remove("hidden");
   document.getElementById("currentCampaignName").textContent = currentName;
   document.getElementById("nextCampaignName").textContent = nextName;
