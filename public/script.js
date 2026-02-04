@@ -15,6 +15,9 @@ var demoMode = !true;
 // serverTime = new Date('Sept 4 2022 16:59:50 UTC+1');
 // serverTime = new Date('Feb 20 2022 23:59:50 UTC+1');
 // serverTime = new Date('Dec 31 2021 23:59:50 UTC+1');
+// serverTime = new Date('July 15 2025 02:23:00 UTC+1');
+// serverTime = new Date('December 28 2030 13:37:00 UTC+1');
+
 var localTime = Date.now(),
     timeDiff = 0,
     showSeconds = true;
