@@ -251,6 +251,7 @@ function quartersSinceSummer2020(currentDate) {
   const totalQuarters = yearDifference * 4 + (currentQuarter - startQuarter);
   return totalQuarters;
 }
+
 /**
  * (Vibe coded with ChatGPT)
  * Returns which number this season is since Summer 2020.
@@ -259,6 +260,9 @@ function quartersSinceSummer2020(currentDate) {
  * - Spring 2026 → 6
  * - Summer 2026 → 7
  * - Fall 2026   → 7
+ * @param {DateTime} currentDate - A Luxon DateTime representing
+ *        the date to evaluate.
+ * @return {number} The season number
  */
 function seasonOrdinalSinceSummer2020(currentDate) {
   const seasonIndex = currentDate.quarter - 1;
@@ -268,6 +272,7 @@ function seasonOrdinalSinceSummer2020(currentDate) {
 
   return currentDate.year - firstYearBySeason[seasonIndex] + 1;
 }
+
 /**
  * (Vibe coded with ChatGPT)
  * Converts a number into its English ordinal representation.
@@ -277,17 +282,23 @@ function seasonOrdinalSinceSummer2020(currentDate) {
  *   2  → "2nd"
  *   3  → "3rd"
  *
- * Handles the special cases for numbers ending in 11, 12, and 13
- * by correctly using the "th" suffix.
- *
- * @param {number} number - The number to convert.
+ * @param {number} value - The number to convert.
  * @returns {string} The ordinal form of the number (e.g. "3rd", "21st").
  */
-function toOrdinalNumber(number) {
-  const suffixes = ["th", "st", "nd", "rd"];
-  const lastTwoDigits = number % 100;
-  return number + (suffixes[(lastTwoDigits - 20) % 10] || suffixes[lastTwoDigits] || suffixes[0]);
-}
+const ordinalRuleSelector = new Intl.PluralRules("en-US", { type: "ordinal" });
+
+const ordinalSuffixMap = new Map([
+  ["one", "st"],
+  ["two", "nd"],
+  ["few", "rd"],
+  ["other", "th"],
+]);
+
+const toOrdinalNumber = (value) => {
+  const rule = ordinalRuleSelector.select(value);
+  return `${value}${ordinalSuffixMap.get(rule)}`;
+};
+
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id),
       monthsSpan = document.getElementById("months"),
