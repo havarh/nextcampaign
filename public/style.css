@@ -44,6 +44,7 @@ body {
   padding-right: env(safe-area-inset-right);
   height: 100vh;
   overflow-y: auto;
+  max-width: 28rem;  
 }
 h2, h3, p {
   color: #c0c0c0; /* #877EA5 */
@@ -89,7 +90,6 @@ p#generalinfo {
 	font-size: 2em;
   padding: .3em;
 }
-
 #clockdiv > div {
   padding: .2em;
   border-radius: .2em;
@@ -101,7 +101,6 @@ p#generalinfo {
     0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224),
     0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
 }
-
 #clockdiv div > span {
   padding: .45em;
   border-radius: .2em;
